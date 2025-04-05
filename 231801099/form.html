@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Signup Form</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Keyframe for fade-in animation */
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in-up {
+      animation: fadeInUp 0.6s ease-out;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-indigo-100 to-purple-200 min-h-screen flex items-center justify-center p-6">
+
+  <div class="bg-white p-8 rounded-xl shadow-xl w-full max-w-lg fade-in-up">
+    <h2 class="text-2xl font-bold text-center text-purple-700 mb-6">✨ Signup Form ✨</h2>
+
+    <form id="signupForm" class="space-y-4">
+
+      <input type="text" id="firstName" placeholder="First Name" required
+        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-400">
+
+      <input type="text" id="lastName" placeholder="Last Name" required
+        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-400">
+
+      <input type="email" id="email" placeholder="Email" required
+        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-400">
+
+      <input type="date" id="dob" required
+        class="w-full px-4 py-2 border border-gray-300 rounded-md text-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-400">
+
+      <input type="text" id="age" placeholder="Age (2 digits)" required
+        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-400">
+
+      <div class="flex items-center space-x-4">
+        <span class="text-gray-700">Gender:</span>
+        <label class="flex items-center">
+          <input type="radio" name="gender" value="Male" required class="mr-1"> Male
+        </label>
+        <label class="flex items-center">
+          <input type="radio" name="gender" value="Female" required class="mr-1"> Female
+        </label>
+      </div>
+
+      <input type="text" id="phone" placeholder="Phone Number" required
+        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-400">
+
+      <textarea id="address" placeholder="Address" required rows="3"
+        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-400"></textarea>
+
+      <button type="submit"
+        class="w-full bg-purple-600 text-white py-2 rounded-md hover:bg-purple-700 transition duration-300">
+        Sign Up
+      </button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("signupForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const data = {
+        firstName: document.getElementById("firstName").value,
+        lastName: document.getElementById("lastName").value,
+        email: document.getElementById("email").value,
+        dob: document.getElementById("dob").value,
+        age: document.getElementById("age").value,
+        gender: document.querySelector('input[name="gender"]:checked')?.value,
+        phone: document.getElementById("phone").value,
+        address: document.getElementById("address").value
+      };
+
+      localStorage.setItem("formData", JSON.stringify(data));
+      window.location.href = "result.html";
+    });
+  </script>
+
+</body>
+</html>
